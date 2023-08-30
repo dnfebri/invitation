@@ -1,11 +1,42 @@
+"use client";
+
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
+import { useSearchParams, useRouter } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const tamu = searchParams.get("to");
+  const [isName, setIsName] = useState<string>("");
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    router.push(`?to=${isName}`);
+  };
+
+  useEffect(() => {
+    if (tamu) {
+      console.log(tamu);
+    }
+  }, [tamu]);
+
+  if (!tamu) {
+    return (
+      <div>
+        <p>masukan nama</p>
+        <form onSubmit={handleSubmit}>
+          <input type="text" onChange={(e) => setIsName(e.target.value)} />
+          <button type="submit">Hallo</button>
+        </form>
+      </div>
+    );
+  }
   return (
     <>
       <Head>

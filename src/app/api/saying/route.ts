@@ -1,20 +1,15 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../prisma/db";
+import { ResposnseJson } from "@/lib/helper";
 type dataPost = {
   note: string;
   author: string;
+  reply?: string;
 };
 
 export const GET = async (req: Request) => {
   const result = await db.congratulations.findMany({});
-  return NextResponse.json(
-    {
-      data: result,
-    },
-    {
-      status: 400,
-    }
-  );
+  return ResposnseJson(result, "success", 200);
 };
 
 export const POST = async (req: Request) => {
@@ -24,21 +19,15 @@ export const POST = async (req: Request) => {
       data: {
         author: data.author,
         note: data.note,
+        reply: data.reply ?? "",
       },
       select: {
         note: true,
         author: true,
+        reply: true,
       },
     });
-    return NextResponse.json(
-      {
-        success: true,
-        data: createCongratulation,
-      },
-      {
-        status: 201,
-      }
-    );
+    return ResposnseJson(createCongratulation, "success", 201);
   } catch (error) {
     return NextResponse.json(
       {
