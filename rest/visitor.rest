@@ -1,0 +1,9 @@
+GET http://localhost:3000/api/visitor
+
+### 
+POST http://localhost:3000/api/visitor
+content-type: application/json
+
+{
+    "username": "febri-tung"
+}

@@ -3,8 +3,9 @@ import bcrypt from "bcrypt";
 
 async function main() {
   const salt = bcrypt.genSaltSync();
-  const hashPassword = bcrypt.hashSync("12345678", salt);
-  const alice = await db.admin.upsert({
+  const password = "12345678";
+  const hashPassword = bcrypt.hashSync(password, salt);
+  const admin = await db.admin.upsert({
     where: { username: "febrykentung" },
     update: {},
     create: {
@@ -12,7 +13,7 @@ async function main() {
       password: hashPassword,
     },
   });
-  console.log(alice);
+  console.log(admin);
 }
 main()
   .then(async () => {
