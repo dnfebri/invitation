@@ -1,0 +1,20 @@
+GET http://localhost:3000/api/congratulate
+
+### 
+POST http://localhost:3000/api/congratulate
+content-type: application/json
+
+{
+    "author": "tung3",
+    "note": "Selamat"
+}
+
+### 
+PUT http://localhost:3000/api/congratulate
+content-type: application/json
+
+{
+    "id": 5,
+    "from": "Tung",
+    "message": "message from kentung 5"
+}

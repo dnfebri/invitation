@@ -10,11 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Congratulations {
+model Congratulate {
   id        Int      @id @default(autoincrement())
   note      String
   author    String
-  reply     String?
+  reply     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
