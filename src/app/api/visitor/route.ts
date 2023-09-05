@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
           read: 1,
         },
       });
-      return ResposnseJson(createVisitor, "Created", 201);
+      return ResposnseJson(createVisitor.username, "Created", 201);
     }
 
     const updateVisitor = await db.visitor.update({
@@ -41,7 +41,7 @@ export const POST = async (req: Request) => {
         read: visitor.read + 1,
       },
     });
-    return ResposnseJson(updateVisitor, "Already Registered", 200);
+    return ResposnseJson(updateVisitor.username, "Already Registered", 200);
   } catch (error) {
     return NextResponse.json(
       {

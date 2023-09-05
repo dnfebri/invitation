@@ -46,7 +46,7 @@ export const POST = async (req: Request) => {
         reply: true,
       },
     });
-    return ResposnseJson(true, "success", 201);
+    return ResposnseJson("OK", "success", 201);
   } catch (error) {
     return NextResponse.json(
       {
