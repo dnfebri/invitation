@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../prisma/db";
-import { Capitalize, ResposnseJson } from "@/lib/helper";
+import { Capitalize, ResponseJson } from "@/lib/helper";
 
 interface IVisitorProps {
   username: string;
@@ -12,7 +12,7 @@ export const GET = async (req: Request) => {
       id: "desc",
     },
   });
-  return ResposnseJson(result, "success", 200);
+  return ResponseJson(result, "success", 200);
 };
 
 export const POST = async (req: Request) => {
@@ -32,7 +32,7 @@ export const POST = async (req: Request) => {
           read: 1,
         },
       });
-      return ResposnseJson(createVisitor.username, "Created", 201);
+      return ResponseJson(createVisitor.username, "Created", 201);
     }
 
     const updateVisitor = await db.visitor.update({
@@ -41,7 +41,7 @@ export const POST = async (req: Request) => {
         read: visitor.read + 1,
       },
     });
-    return ResposnseJson(updateVisitor.username, "Already Registered", 200);
+    return ResponseJson(updateVisitor.username, "Already Registered", 200);
   } catch (error) {
     return NextResponse.json(
       {

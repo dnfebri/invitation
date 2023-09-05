@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../prisma/db";
-import { ResposnseJson } from "@/lib/helper";
+import { ResponseJson } from "@/lib/helper";
 type ICongratulate = {
   note: string;
   author: string;
@@ -28,7 +28,7 @@ export const GET = async (req: Request) => {
       reply: JSON.parse(reply),
     });
   });
-  return ResposnseJson(responseResult, "success", 200);
+  return ResponseJson(responseResult, "success", 200);
 };
 
 export const POST = async (req: Request) => {
@@ -46,7 +46,7 @@ export const POST = async (req: Request) => {
         reply: true,
       },
     });
-    return ResposnseJson("OK", "success", 201);
+    return ResponseJson("OK", "success", 201);
   } catch (error) {
     return NextResponse.json(
       {
@@ -85,8 +85,8 @@ export const PUT = async (req: Request) => {
       },
     });
 
-    return ResposnseJson(replyJson, "success", 200);
+    return ResponseJson(replyJson, "success", 200);
   } catch (error) {
-    return ResposnseJson(error, "error", 200);
+    return ResponseJson(error, "error", 200);
   }
 };
