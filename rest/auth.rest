@@ -1,0 +1,7 @@
+POST http://localhost:3001/api/auth/login
+content-type: application/json
+
+{
+    "username": "febrikentung",
+    "password": "12345678"
+}
