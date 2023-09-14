@@ -31,7 +31,7 @@ model Admin {
   id        Int      @id @default(autoincrement())
   username  String   @unique
   password  String
-  token     String
+  token     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
