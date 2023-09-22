@@ -1,1 +1,2 @@
-export * from "./inputForm";
+export * from "./InputForm";
+export * from "./labelErrorForm";

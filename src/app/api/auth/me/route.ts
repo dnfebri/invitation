@@ -14,6 +14,8 @@ export const GET = async (req: NextRequest) => {
   const user = await db.admin.findUnique({ where: { id: Number(userId) } });
   return NextResponse.json({
     status: "success",
-    data: { user: { ...user, password: undefined } },
+    data: {
+      user: { ...user, password: undefined, token: undefined, id: undefined },
+    },
   });
 };
