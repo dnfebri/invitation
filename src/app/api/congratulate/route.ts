@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../prisma/db";
-import { ResponseJson } from "@/lib/helper";
+import { ResponseJson } from "@/lib/helpers";
 type ICongratulate = {
   note: string;
   author: string;

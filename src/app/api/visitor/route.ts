@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../prisma/db";
-import { Capitalize, ResponseJson } from "@/lib/helper";
+import { Capitalize, ResponseJson } from "@/lib/helpers";
 
 interface IVisitorProps {
   username: string;

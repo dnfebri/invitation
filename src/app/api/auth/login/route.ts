@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
 import { db } from "../../../../../prisma/db";
-import { ResponseJson } from "@/lib/helper";
+import { ResponseJson } from "@/lib/helpers";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { signJWT } from "@/lib/token";
 
 type TLoginPost = {
   username: string;
@@ -12,7 +13,7 @@ type TLoginPost = {
 export const POST = async (req: Request) => {
   const reqLogin: TLoginPost = await req.json();
   try {
-    const admin = await db.admin.findFirstOrThrow({
+    const admin = await db.admin.findUnique({
       where: {
         username: reqLogin.username,
       },
@@ -52,17 +53,44 @@ export const POST = async (req: Request) => {
     }
 
     const { id, username } = admin;
-    const secretKey = process.env.TOKEN_SECRET || "secret";
-    const generateToken = jwt.sign({ id, username }, secretKey, {
-      expiresIn: "1d",
-    });
+    const generateToken = await signJWT({ sub: id.toString() }, { exp: `1d` });
 
     await db.admin.update({
       data: { token: generateToken },
       where: { id: admin.id },
     });
 
-    return ResponseJson({ token: generateToken }, "success", 200);
+    const tokenMaxAge = 60 * 60;
+    const cookieOptions = {
+      name: "token",
+      value: generateToken,
+      httpOnly: true,
+      path: "/",
+      secure: process.env.NODE_ENV !== "development",
+      maxAge: tokenMaxAge,
+    };
+
+    const response = new NextResponse(
+      JSON.stringify({
+        status: "success",
+        token: generateToken,
+      }),
+      {
+        status: 200,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+
+    await Promise.all([
+      response.cookies.set(cookieOptions),
+      response.cookies.set({
+        name: "logged-in",
+        value: "true",
+        maxAge: tokenMaxAge,
+      }),
+    ]);
+
+    return response;
   } catch (error) {
     return NextResponse.json(
       {

@@ -1,7 +1,17 @@
-POST http://localhost:3001/api/auth/login
+POST http://localhost:3030/api/auth/login
 content-type: application/json
 
 {
     "username": "febrikentung",
     "password": "12345678"
 }
+
+###
+# Get Me
+GET http://localhost:3030/api/auth/me
+content-type: application/json
+# Authorization: Bearer yJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk1NDQ0MDE0LCJpYXQiOjE2OTUzNTc2MTR9.sgZD84IgBjPicpUloLWd5N8v0dKRrlIQiTcOxtFslGU
+
+###
+DELETE http://localhost:3030/api/auth/logout
+content-type: application/json

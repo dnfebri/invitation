@@ -1,7 +1,7 @@
-GET http://localhost:3000/api/congratulate
+GET http://localhost:3030/api/congratulate
 
 ### 
-POST http://localhost:3000/api/congratulate
+POST http://localhost:3030/api/congratulate
 content-type: application/json
 
 {
@@ -10,7 +10,7 @@ content-type: application/json
 }
 
 ### 
-PUT http://localhost:3000/api/congratulate
+PUT http://localhost:3030/api/congratulate
 content-type: application/json
 
 {

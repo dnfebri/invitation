@@ -20,3 +20,23 @@ export const Capitalize = (text: string) => {
   const str2 = arr.join(" ");
   return str2;
 };
+
+export const SecretKey = process.env.TOKEN_SECRET || "secret";
+
+export function GetErrorResponse(
+  status: number = 500,
+  message: string
+  // errors: ZodError | null = null
+) {
+  return new NextResponse(
+    JSON.stringify({
+      status: status < 500 ? "fail" : "error",
+      message,
+      // errors: errors ? errors.flatten() : null,
+    }),
+    {
+      status,
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+}
