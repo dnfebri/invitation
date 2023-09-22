@@ -2,7 +2,7 @@ POST http://localhost:3030/api/auth/login
 content-type: application/json
 
 {
-    "username": "febrikentung",
+    "username": "febrykentung",
     "password": "12345678"
 }
 
@@ -10,8 +10,9 @@ content-type: application/json
 # Get Me
 GET http://localhost:3030/api/auth/me
 content-type: application/json
-# Authorization: Bearer yJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk1NDQ0MDE0LCJpYXQiOjE2OTUzNTc2MTR9.sgZD84IgBjPicpUloLWd5N8v0dKRrlIQiTcOxtFslGU
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk1NDU1MTk0LCJpYXQiOjE2OTUzNjg3OTR9.-mUqTLBO8P8L4_kwI76pggWeIRB7plTq4p3bS-e0eXc
 
 ###
 DELETE http://localhost:3030/api/auth/logout
 content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk1NDU1MTk0LCJpYXQiOjE2OTUzNjg3OTR9.-mUqTLBO8P8L4_kwI76pggWeIRB7plTq4p3bS-e0eXc

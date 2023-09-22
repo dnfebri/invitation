@@ -1,5 +1,6 @@
 "use client";
 import { FormLogout } from "@/components/form/FormLogout";
+import Link from "next/link";
 import React from "react";
 
 export default function AdminIndex() {
@@ -7,6 +8,9 @@ export default function AdminIndex() {
     <div>
       <p>AdminIndex</p>
       <FormLogout />
+      <div>
+        <Link href={"/admin/test"}>test</Link>
+      </div>
     </div>
   );
 }
