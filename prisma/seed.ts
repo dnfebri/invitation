@@ -9,7 +9,7 @@ async function main() {
     where: { username: "febrykentung" },
     update: {},
     create: {
-      username: "febrikentung",
+      username: "febrykentung",
       password: hashPassword,
     },
   });

@@ -21,6 +21,9 @@ export async function middleware(req: NextRequest) {
   if (req.nextUrl.pathname.startsWith("/login") && (!token || redirectToLogin))
     return;
 
+  if (!req.nextUrl.pathname.startsWith("/login") && !token) {
+    return NextResponse.redirect(new URL("/login", req.url));
+  }
   if (!token) {
     return GetErrorResponse(
       401,
@@ -62,7 +65,7 @@ export async function middleware(req: NextRequest) {
   }
 
   if (req.url.includes("/login") && authUser) {
-    return NextResponse.redirect(new URL("/profile", req.url));
+    return NextResponse.redirect(new URL("/admin", req.url));
   }
 
   return response;
@@ -72,6 +75,7 @@ export const config = {
   matcher: [
     "/profile",
     "/login",
+    "/admin/:path*",
     "/api/auth/me/:path*",
     "/api/auth/logout",
     "/api/admin/:path*",
