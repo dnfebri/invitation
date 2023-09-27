@@ -40,7 +40,8 @@ export default function Home() {
   if (!tamu) {
     return (
       <div>
-        <WelcomeSection />
+        {/* <WelcomeSection /> */}
+        <p>home</p>
       </div>
     );
   }
