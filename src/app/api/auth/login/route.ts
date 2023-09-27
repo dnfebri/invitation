@@ -60,7 +60,7 @@ export const POST = async (req: Request) => {
       where: { id: admin.id },
     });
 
-    const tokenMaxAge = 60 * 60;
+    const tokenMaxAge = 60 * 60 * 60;
     const cookieOptions = {
       name: "token",
       value: generateToken,

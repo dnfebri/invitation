@@ -1,12 +1,7 @@
-import { Capitalize, ResponseJson } from "@/lib/helpers";
+import { ResponseJson } from "@/lib/helpers";
 import { db } from "../../../../../prisma/db";
-import { NextApiRequest } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import { customPagination } from "@/utils/pagination";
-
-interface IVisitorProps {
-  username: string;
-}
 
 export const GET = async (req: NextRequest) => {
   try {

@@ -18,3 +18,17 @@ content-type: application/json
     "from": "Tung",
     "message": "message from kentung 5"
 }
+
+
+###
+# ADMIN #
+GET http://localhost:3030/api/admin/congratulate?page=1&limit=5
+content-type: application/json
+
+###
+PUT http://localhost:3030/api/admin/congratulate/1
+content-type: application/json
+
+{
+    "active": true
+}
