@@ -17,7 +17,6 @@ export const GET = async (req: Request) => {
 
 export const POST = async (req: Request) => {
   const data: IVisitorProps = await req.json();
-  console.log(data);
 
   try {
     const visitor = await db.visitor.findUnique({

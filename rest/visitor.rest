@@ -5,9 +5,9 @@ POST http://localhost:3030/api/visitor
 content-type: application/json
 
 {
-    "username": "febri-tung"
+    "username": "aku-tung2"
 }
 
 ###
 # ADMIN #
-GET http://localhost:3030/api/admin/visitor
+GET http://localhost:3030/api/admin/visitor?page=3&limit=5

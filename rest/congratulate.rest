@@ -14,7 +14,7 @@ PUT http://localhost:3030/api/congratulate
 content-type: application/json
 
 {
-    "id": 5,
+    "id": 1,
     "from": "Tung",
     "message": "message from kentung 5"
 }
