@@ -11,7 +11,7 @@ const Path = (props: any) => (
   />
 );
 
-export const MenuToggle = ({ toggle }: any) => (
+export const MenuToggle = ({ toggle }: { toggle: () => void }) => (
   <button onClick={toggle} className="absolute top-5 left-5 sm:left-7">
     <svg width="23" height="23" viewBox="0 0 23 23">
       <Path

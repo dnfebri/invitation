@@ -8,10 +8,9 @@ import React from "react";
 export default function AdminIndex() {
   return (
     <LayoutAdmin>
-      <Navigation />
       <div className="max-w-md mx-auto">
         <p>AdminIndex</p>
-        <FormLogout />
+        <FormLogout>Logout</FormLogout>
         <div>
           <Link href={"/admin/test"}>test</Link>
         </div>

@@ -1,9 +1,14 @@
 import axios from "axios";
-import React from "react";
+import React, { ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { ROUTER } from "@/constants/routes";
 
-export const FormLogout = () => {
+interface IFormLogout {
+  children: ReactNode;
+  className?: string;
+}
+
+export const FormLogout = (props: IFormLogout) => {
   const router = useRouter();
   const handleLogout = async () => {
     try {
@@ -15,7 +20,9 @@ export const FormLogout = () => {
   };
   return (
     <>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout} className={props.className}>
+        {props.children}
+      </button>
     </>
   );
 };

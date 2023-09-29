@@ -9,7 +9,6 @@ export default function TestPage() {
   const router = useRouter();
   return (
     <LayoutAdmin>
-      <Navigation />
       <p>TestPage</p>
       <div>
         <Link href={"/admin"}>Back</Link>

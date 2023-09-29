@@ -3,16 +3,28 @@ import { motion, sync, useCycle } from "framer-motion";
 import { useDimensions } from "./use-dimensions";
 import React, { useRef } from "react";
 import { MenuToggle } from "./MenuToggle";
-import { BiHomeHeart } from "react-icons/bi";
+import { BiHomeHeart, BiLogOut } from "react-icons/bi";
 import { MdRateReview, MdStreetview } from "react-icons/md";
+import { RiUserSettingsLine } from "react-icons/ri";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { FormLogout } from "../form/FormLogout";
+import axios from "axios";
+import { ROUTER } from "@/constants/routes";
 
 export const Navigation = () => {
   const router = useRouter();
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+  const handleLogout = async () => {
+    try {
+      await axios.delete("/api/auth/logout");
+      router.push(ROUTER.LOGIN);
+    } catch (error) {
+      console.log("handleLogout", error);
+    }
+  };
 
   const sidebar: Variants = {
     open: (height = 1000) => ({
@@ -24,9 +36,9 @@ export const Navigation = () => {
       },
     }),
     closed: {
-      clipPath: "circle(30px at 40px 40px)",
+      clipPath: "circle(0px at 40px 30px)",
       transition: {
-        delay: 0.5,
+        delay: 0.3,
         type: "spring",
         stiffness: 400,
         damping: 40,
@@ -68,18 +80,22 @@ export const Navigation = () => {
       custom={height}
       ref={containerRef}
     >
-      <motion.div className={`absolute w-80 bg-red-500`} variants={sidebar} />
+      <motion.div
+        className={`absolute top-0 bottom-0 left-0 right-0 bg-black/20`}
+        variants={sidebar}
+      />
       <motion.div
         variants={variants}
         className="absolute left-3 top-3 sm:left-5"
       >
         <div className="relative">
+          {/* Home */}
           <motion.p
             variants={{
               open: { ...variantsMenu.open, y: 0, x: 90 },
               closed: { ...variantsMenu.closed },
             }}
-            className={`absolute p-2 text-3xl rounded-full shadow-xl cursor-pointer hover:bg-primary`}
+            className={`absolute p-2 text-3xl rounded-full shadow-xl cursor-pointer bg-white hover:bg-primary`}
             onClick={() => {
               toggleOpen();
               setTimeout(() => {
@@ -89,35 +105,40 @@ export const Navigation = () => {
           >
             <BiHomeHeart />
           </motion.p>
+          {/* Setting */}
           <motion.p
             variants={{
               open: { ...variantsMenu.open, y: 60, x: 60 },
               closed: { ...variantsMenu.closed },
             }}
-            className={`absolute p-2 text-3xl rounded-full shadow-xl cursor-pointer hover:bg-blue-300`}
+            className={`absolute p-2 text-3xl rounded-full shadow-xl cursor-pointer bg-white hover:bg-blue-300`}
             onClick={() => {
               toggleOpen();
               setTimeout(() => {
-                router.push("/admin/seen");
+                router.push("/admin/setting");
               }, 500);
             }}
           >
-            <MdStreetview />
+            <RiUserSettingsLine />
           </motion.p>
+          {/* Logout */}
           <motion.p
             variants={{
               open: { ...variantsMenu.open, y: 90, x: 0 },
               closed: { ...variantsMenu.closed },
             }}
-            className={`absolute p-2 text-3xl rounded-full shadow-xl cursor-pointer hover:bg-accent`}
+            className={`absolute p-2 text-3xl rounded-full shadow-xl cursor-pointer bg-white hover:bg-accent`}
             onClick={() => {
               toggleOpen();
               setTimeout(() => {
-                router.push("/admin/test");
+                const approve = confirm("Apakah Anda ingin Logout?");
+                if (approve) {
+                  handleLogout();
+                }
               }, 500);
             }}
           >
-            <MdRateReview />
+            <BiLogOut />
           </motion.p>
         </div>
       </motion.div>
@@ -125,5 +146,3 @@ export const Navigation = () => {
     </motion.nav>
   );
 };
-
-const itemIds = [0, 1, 2, 3, 4];
