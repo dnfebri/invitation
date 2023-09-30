@@ -16,7 +16,7 @@ content-type: application/json
 {
     "id": 1,
     "from": "Tung",
-    "message": "message from kentung 5"
+    "message": "message from kentung"
 }
 
 

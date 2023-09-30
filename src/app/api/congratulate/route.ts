@@ -96,7 +96,7 @@ export const PUT = async (req: Request) => {
     });
     const replyJson = JSON.parse(congratulate[0].reply);
     replyJson.push(messageReply);
-    const updateReply = await db.congratulate.update({
+    await db.congratulate.update({
       where: {
         id: data.id,
       },

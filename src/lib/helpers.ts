@@ -1,9 +1,10 @@
+import { getCookie } from "cookies-next";
 import { NextResponse } from "next/server";
 
 export const ResponseJson = (data: any, message: string, status: number) => {
   return NextResponse.json(
     {
-      data,
+      ...data,
       message,
     },
     {
@@ -40,3 +41,13 @@ export function GetErrorResponse(
     }
   );
 }
+
+export const HelperAxiosAuthorization = () => {
+  const token = getCookie("token");
+  const authhorization = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  return authhorization;
+};

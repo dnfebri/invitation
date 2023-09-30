@@ -7,4 +7,4 @@ content-type: application/json
 
 ###
 # ADMIN #
-GET http://localhost:3030/api/admin/visitor?page=3&limit=5
+GET http://localhost:3030/api/admin/visitor?page=1&limit=10
