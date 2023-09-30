@@ -1,25 +1,18 @@
 import { ResponseJson } from "@/lib/helpers";
-import { customPagination } from "@/utils/pagination";
+import { CustomPagination } from "@/utils/pagination";
 import { NextRequest, NextResponse } from "next/server";
 import { db } from "../../../../../prisma/db";
 
 export const GET = async (req: NextRequest) => {
   try {
     const query = req.nextUrl.searchParams;
-    const page = Number(query.getAll("page")) ?? 1;
-    const limit = Number(query.getAll("limit")) ?? 10;
+    const page = query.get("page") ? Number(query.get("page")) : 1;
+    const limit = query.get("limit") ? Number(query.get("limit")) : 10;
     const skip = limit * (page - 1);
-    const total = await db.congratulate.count({
-      where: {
-        is_active: true,
-      },
-    });
+    const total = await db.congratulate.count();
     const result = await db.congratulate.findMany({
       skip: skip,
       take: limit,
-      where: {
-        is_active: true,
-      },
       orderBy: {
         id: "desc",
       },
@@ -41,7 +34,7 @@ export const GET = async (req: NextRequest) => {
     });
 
     return ResponseJson(
-      customPagination(responseResult, total, { page, limit }),
+      CustomPagination(responseResult, total, { page, limit }),
       "success",
       200
     );

@@ -3,7 +3,7 @@ interface IPaginationOptions {
   limit: number;
 }
 
-export const customPagination = <T>(
+export const CustomPagination = <T>(
   data: T[],
   total: number,
   options: IPaginationOptions

@@ -6,14 +6,14 @@ interface IVisitorProps {
   username: string;
 }
 
-export const GET = async (req: Request) => {
-  const result = await db.visitor.findMany({
-    orderBy: {
-      id: "desc",
-    },
-  });
-  return ResponseJson(result, "success", 200);
-};
+// export const GET = async (req: Request) => {
+//   const result = await db.visitor.findMany({
+//     orderBy: {
+//       id: "desc",
+//     },
+//   });
+//   return ResponseJson(result, "success", 200);
+// };
 
 export const POST = async (req: Request) => {
   const data: IVisitorProps = await req.json();

@@ -1,6 +1,3 @@
-GET http://localhost:3030/api/visitor
-
-### 
 POST http://localhost:3030/api/visitor
 content-type: application/json
 

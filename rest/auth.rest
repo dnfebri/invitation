@@ -10,9 +10,17 @@ content-type: application/json
 # Get Me
 GET http://localhost:3030/api/auth/me
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk1NDU1MTk0LCJpYXQiOjE2OTUzNjg3OTR9.-mUqTLBO8P8L4_kwI76pggWeIRB7plTq4p3bS-e0eXc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MTI4OTk4LCJpYXQiOjE2OTYwNDI1OTh9.ML4HF-hREQEQuzp_BtwCyD53DTR0cRJF8QMS6BxWyq0
+
+###
+# Chang Password
+PUT http://localhost:3030/api/auth/change-password
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MTI4OTk4LCJpYXQiOjE2OTYwNDI1OTh9.ML4HF-hREQEQuzp_BtwCyD53DTR0cRJF8QMS6BxWyq0
+
+{}
 
 ###
 DELETE http://localhost:3030/api/auth/logout
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk1NDU1MTk0LCJpYXQiOjE2OTUzNjg3OTR9.-mUqTLBO8P8L4_kwI76pggWeIRB7plTq4p3bS-e0eXc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MTI4OTk4LCJpYXQiOjE2OTYwNDI1OTh9.ML4HF-hREQEQuzp_BtwCyD53DTR0cRJF8QMS6BxWyq0

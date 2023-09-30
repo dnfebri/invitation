@@ -1,7 +1,7 @@
 import { ResponseJson } from "@/lib/helpers";
 import { db } from "../../../../../prisma/db";
 import { NextRequest, NextResponse } from "next/server";
-import { customPagination } from "@/utils/pagination";
+import { CustomPagination } from "@/utils/pagination";
 
 export const GET = async (req: NextRequest) => {
   try {
@@ -19,7 +19,7 @@ export const GET = async (req: NextRequest) => {
     });
 
     return ResponseJson(
-      customPagination(result, total, { page, limit }),
+      CustomPagination(result, total, { page, limit }),
       "success",
       200
     );

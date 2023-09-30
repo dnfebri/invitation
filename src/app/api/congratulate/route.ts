@@ -1,14 +1,30 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { db } from "../../../../prisma/db";
 import { ResponseJson } from "@/lib/helpers";
+import { CustomPagination } from "@/utils/pagination";
 type ICongratulate = {
   note: string;
   author: string;
   reply: string | JSON;
 };
 
-export const GET = async (req: Request) => {
+export const GET = async (req: NextRequest) => {
+  const query = req.nextUrl.searchParams;
+  const page = query.get("page") ? Number(query.get("page")) : 1;
+  const limit = query.get("limit") ? Number(query.get("limit")) : 10;
+  const skip = limit * (page - 1);
+  const total = await db.congratulate.count({
+    where: {
+      is_active: true,
+    },
+  });
+
   const result = await db.congratulate.findMany({
+    skip: skip,
+    take: limit,
+    where: {
+      is_active: true,
+    },
     orderBy: {
       id: "desc",
     },
@@ -28,7 +44,11 @@ export const GET = async (req: Request) => {
       reply: JSON.parse(reply),
     });
   });
-  return ResponseJson(responseResult, "success", 200);
+  return ResponseJson(
+    CustomPagination(responseResult, total, { page, limit }),
+    "success",
+    200
+  );
 };
 
 export const POST = async (req: Request) => {
