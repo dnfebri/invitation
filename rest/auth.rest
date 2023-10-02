@@ -10,17 +10,17 @@ content-type: application/json
 # Get Me
 GET http://localhost:3030/api/auth/me
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MTI4OTk4LCJpYXQiOjE2OTYwNDI1OTh9.ML4HF-hREQEQuzp_BtwCyD53DTR0cRJF8QMS6BxWyq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MzAzNzc4LCJpYXQiOjE2OTYyMTczNzh9.Kq_NA5G9-29J6YW7uavGfJUkCANBc_QatVCsLoiE6Qg
 
 ###
 # Chang Password
 PUT http://localhost:3030/api/auth/change-password
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MTI4OTk4LCJpYXQiOjE2OTYwNDI1OTh9.ML4HF-hREQEQuzp_BtwCyD53DTR0cRJF8QMS6BxWyq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MzAzNzc4LCJpYXQiOjE2OTYyMTczNzh9.Kq_NA5G9-29J6YW7uavGfJUkCANBc_QatVCsLoiE6Qg
 
 {}
 
 ###
 DELETE http://localhost:3030/api/auth/logout
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MTI4OTk4LCJpYXQiOjE2OTYwNDI1OTh9.ML4HF-hREQEQuzp_BtwCyD53DTR0cRJF8QMS6BxWyq0
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwiZXhwIjoxNjk2MzAzNzc4LCJpYXQiOjE2OTYyMTczNzh9.Kq_NA5G9-29J6YW7uavGfJUkCANBc_QatVCsLoiE6Qg

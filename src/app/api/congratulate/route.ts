@@ -66,7 +66,7 @@ export const POST = async (req: Request) => {
         reply: true,
       },
     });
-    return ResponseJson("OK", "success", 201);
+    return ResponseJson(null, "success", 201);
   } catch (error) {
     return NextResponse.json(
       {
@@ -105,7 +105,7 @@ export const PUT = async (req: Request) => {
       },
     });
 
-    return ResponseJson(replyJson, "success", 200);
+    return ResponseJson(null, "success", 200);
   } catch (error) {
     return ResponseJson(error, "error", 200);
   }

@@ -5,7 +5,7 @@ POST http://localhost:3030/api/congratulate
 content-type: application/json
 
 {
-    "author": "tung3",
+    "author": "tung2",
     "note": "Selamat"
 }
 
@@ -14,9 +14,9 @@ PUT http://localhost:3030/api/congratulate
 content-type: application/json
 
 {
-    "id": 1,
+    "id": 3,
     "from": "Tung",
-    "message": "message from kentung"
+    "message": "message from aku"
 }
 
 
@@ -26,7 +26,7 @@ GET http://localhost:3030/api/admin/congratulate?page=1&limit=5
 content-type: application/json
 
 ###
-PUT http://localhost:3030/api/admin/congratulate/1
+PUT http://localhost:3030/api/admin/congratulate/4
 content-type: application/json
 
 {
