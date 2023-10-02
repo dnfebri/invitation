@@ -10,7 +10,7 @@ interface IParams {
 export const PUT = async (req: NextRequest, { params }: IParams) => {
   const { active } = await req.json();
   try {
-    const result = await db.congratulate.update({
+    await db.congratulate.update({
       where: {
         id: Number(params.id),
       },
@@ -20,7 +20,7 @@ export const PUT = async (req: NextRequest, { params }: IParams) => {
     });
     return NextResponse.json({
       success: true,
-      data: result,
+      message: "success",
     });
   } catch (error) {
     return NextResponse.json(

@@ -60,11 +60,13 @@ export const TableGuestInvitationSent = () => {
                 <td>{row.name}</td>
                 <td>{row.read}</td>
                 <td>
-                  {row.attend === null
-                    ? ""
-                    : row.attend
-                    ? "Hadir"
-                    : "Tidak Haridir"}
+                  {row.attend === null ? (
+                    ""
+                  ) : row.attend ? (
+                    <span className="px-2 rounded-lg bg-success">Hadir</span>
+                  ) : (
+                    "Tidak Haridir"
+                  )}
                 </td>
               </tr>
             ))}
