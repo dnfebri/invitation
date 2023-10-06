@@ -1,9 +1,11 @@
+import { store } from "@/store/store";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Providers } from "@/store/redux/provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +27,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <body className={`${inter.className}`}>
-        <ToastContainer />
-        {/* <div className="max-w-xl mx-auto">{children}</div> */}
-        {children}
+        <Providers>
+          <ToastContainer />
+          {/* <div className="max-w-xl mx-auto">{children}</div> */}
+          {children}
+        </Providers>
       </body>
     </html>
   );
